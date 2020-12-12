@@ -1,0 +1,16 @@
+<title>Login</title>
+<body>
+{% extends "header.html" %}
+{% block content %}
+<h2>Login:</h2>
+<form action="{{ url_for('login') }}" method=post>
+  <dl>
+    <dt>Username:
+    <dd><input type="text" size=15 name="username"><br>
+    <dt>Password:
+    <dd><input type="password" size=15 name="password"><br>
+    <dd><input type="submit" name="submit" value="submit"><br>
+  </dl>
+</form>
+</body>
+{% endblock %}

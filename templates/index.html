@@ -1,0 +1,44 @@
+<!doctype html>
+<head>
+    <title>Book Catalog</title>
+</head>
+<body>
+{% extends "header.html" %}
+{% block content %}
+    {% if not session.logged_in %}
+      <p>Book Catalog allows you to create a book catalog to track your library of books.</p>
+      <p>Search for books by ISBN to add to your library, delete those you do not have anymore.</p>
+      <p>You will need to <a href="/login">login</a> to use Book Catalog.<br>
+
+    {% else %}
+      <h2 style="text-align:center">Your Library</h2>
+      <table style="text-align:center">
+          <tr style="text-align:center">
+              <td>Book Image</td>
+              <td>ISBN</td>
+              <td>Title</td>
+              <td>Author(s)</td>
+              <td>Page Count</td>
+              <td>Avg. Rating</td>
+              <td>Delete</td>
+          </tr>
+{% for book in books %}
+<tr style="text-align:center">
+    <td>{% if book.thumbnail %}<img src="{{ book.thumbnail }}">{% endif %}</td>
+    <td>{{ book.isbn }}</td>
+    <td>{{ book.title }}</td>
+    <td>{{ book.authors }}</td>
+    <td>{{ book.pagecount }}</td>
+    <td>{{ book.averagerating }}</td>
+    <td><a href="/delete?id={{ book.id }}">Delete</a></td>
+</tr>
+{% else %}
+    <tr>
+    <td colspan="2" style="text-align:center">You have no books in your library. </td>
+    <td style="text-align:center"> Use <a href="/lookup">book lookup</a> to add to your library.</td>
+    </tr>
+{% endfor %}
+</table>
+{% endif %}
+</body>
+{% endblock %}

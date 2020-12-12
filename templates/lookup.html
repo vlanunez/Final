@@ -1,0 +1,51 @@
+<head>
+<title>Look Up</title>
+</head>
+<body>
+{% extends "header.html" %}
+{% block content %}
+
+{% if not session.logged_in %}
+<h2>Book Lookup</h2>
+<p>Book Catalog allows you to create a book catalog to track your library of books.</p>
+<p>Search for books by ISBN to add to your library, delete those you do not have anymore.</p>
+<p>You will need to <a href="/login">login</a> to use Book Catalog:<br>
+
+{% else %}
+
+<form action="/lookup" method="post">
+<dl>
+<dt>ISBN #:<input type="text" name="ISBN"><input type="submit" value="Look Up">
+</dl>
+</form>
+
+<form action="/add" method="post">
+  <input type="hidden" name="isbn" value="{{ isbn }}">
+  <input type="hidden" name="title" value="{{ title }}"><input type="hidden" name="authors" value="{{ authors }}">
+  <input type="hidden" name="pagecount" value="{{ pagecount }}">
+  <input type="hidden" name="averagerating" value="{{ averagerating }}">
+  <input type="hidden" name="thumbnail" value="{{ thumbnail }}">
+
+<table>
+    <tr style="text-align:center">
+        <th></th>
+        <th>Title</th>
+        <th>Author(s)</th>
+        <th>Page Count</th>
+        <th>Average Rating</th>
+        <th>Add to Catalog?<th>
+    </tr>
+    <tr>
+        <td>{% if thumbnail %} <img src="{{ thumbnail }}"></td>{% endif %}
+        <td>{{ title }}</td>
+        <td>{{ authors }}</td>
+        <td>{{ pagecount }}</td>
+        <td>{{ averagerating }}</td>
+        <td style="text-align:center"><input type="submit" value="Add">
+    </tr>
+</table>
+</form>
+</body>
+{% endif %}
+
+{% endblock %}

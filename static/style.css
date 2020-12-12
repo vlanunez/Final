@@ -1,0 +1,17 @@
+body            { font-family: sans-serif; background: #3d3d3d; }
+a, h1, h2       { color: #2a5f83; }
+h1, h2          { font-family: 'Times', Gadget, sans-serif; margin: 10; }
+h1              { border-bottom: 10px solid #eee; }
+h2              { font-size: 1.5em; }
+
+.page           { margin: 2em auto; max-width: 60em; border: 10px solid #ccc;
+                  padding: 1em; background: white; }
+.entries        { list-style: none; margin: 0; padding: 0; }
+.entries tr     { margin: 0.8em 1.2em; }
+.entries td h2  { margin-left: -1em; }
+
+.metanav        { text-align: left; font-size: 1em; padding: 0.3em;
+                  margin-bottom: 1em; background: #ededed; }
+.flash          { background: #c0e4eb; padding: 0.5em;
+                  border: 1px solid #070f14; }
+.error          { background: #f0d6d6; padding: 0.5em; }
